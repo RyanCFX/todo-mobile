@@ -1,50 +1,82 @@
-# Welcome to your Expo app 👋
+# 📱 Configuración y Ejecución del Proyecto Expo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Este documento describe los pasos para levantar el proyecto Expo, instalar las dependencias necesarias y configurar la conexión con la api para poder consumir los servicios.
+---
 
-## Get started
+## 🚀 Instalación de Dependencias
 
-1. Install dependencies
+1. **Clonar el repositorio:**
+   ```sh
+   git clone https://github.com/RyanCFX/todo-mobile.git
+   cd todo-mobile
+   ```
 
-   ```bash
+2. **Instalar dependencias:**
+   ```sh
    npm install
    ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
+   o si prefieres usar `yarn`:
+   ```sh
+   yarn install
    ```
 
-In the output, you'll find options to open the app in a
+3. **Instalar Expo CLI globalmente (si no lo tienes instalado):**
+   ```sh
+   npm install -g expo-cli
+   ```
+   o con `yarn`:
+   ```sh
+   yarn global add expo-cli
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🔧 Configuración del API_URL
 
-## Get a fresh project
+El `API_URL` debe configurarse en dos archivos dentro de la carpeta `utils/`.
 
-When you're ready, run:
+### 1️⃣ Configurar `API_URL`
 
-```bash
-npm run reset-project
+Ubica los archivos `utils/http.ts` y `utils/taskSocket.ts` y asegúrate de que tenga la siguiente configuración:
+
+```ts
+const API_URL = "https://api.com";
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+En caso de que no esté leyendo las variables de entorno, puede poner la url del api en duro en estos 2 archivos, siendo los unicos que la utilizan.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## ▶️ Ejecutar el Proyecto
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. **Iniciar el servidor de desarrollo:**
+   ```sh
+   npm start
+   ```
 
-## Join the community
+2. **Abrir en un emulador o dispositivo:**
+   - Para Android: Pulsa `a`
+   - Para iOS: Pulsa `i` (solo en macOS con Xcode instalado)
+   - Escanea el código QR con la aplicación Expo Go
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🛠️ Solución de Problemas
+
+- Si el proyecto no arranca correctamente, intenta:
+  ```sh
+  expo start --clear
+  ```
+- Si hay problemas con dependencias, intenta reinstalar:
+  ```sh
+  rm -rf node_modules && npm install
+  ```
+- Si hay problemas por dependencias legacy, intenta:
+  ```sh
+  rm -rf node_modules && npm install --legacy-peer
+  ```
+
+---
+
+¡Listo! Ahora el proyecto Expo está configurado y en funcionamiento. 🚀
+
